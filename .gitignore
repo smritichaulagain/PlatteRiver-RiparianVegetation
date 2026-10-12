@@ -1,0 +1,28 @@
+# ---- Large geospatial data: never commit (too big for GitHub) ----
+*.gdb/
+*.tif
+*.tiff
+*.img
+*.ovr
+*.aux.xml
+*.vat.dbf
+*.vat.cpg
+exports/
+labels_30m/
+
+# Keep the small training-point shapefiles in data/samples/ (whitelisted below)
+!data/samples/*.shp
+!data/samples/*.shx
+!data/samples/*.dbf
+!data/samples/*.prj
+!data/samples/*.cpg
+
+# ---- Python / Jupyter ----
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# ---- OS / misc ----
+.DS_Store
+Thumbs.db
+~$*
