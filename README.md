@@ -6,6 +6,19 @@ land cover maps, resampled to 30 m. Goal: a consistent ~5-year land cover series
 to relate channel and vegetation change to streamflow, precipitation, temperature.
 Method after Chaulagain et al. (2023), *J. Arid Environ.* 219:105068.
 
+## Overview
+- Report the **held-out test** accuracy, not the classifier's own (resubstitution) matrix.
+- Each year uses its **own** imagery + labels — never reuse labels across years.
+- HR covers ~2000–2021; **1984 and 2025 have no HR**, so they use hand-digitized points.
+- **2005** has no Water/Sand code in the source — treat those two classes with care.
+- Landsat 5 years: check the printed scene counts per season; widen a window if 0–1.
+- Keep the feature setup identical every year so trends are real, not method artifacts.
+- For rest of the year where PRRIP classifed image were not available manual labeling were perfermed for each classes 
+- Manual labeling were perfomed for 1984 and 2024, check if 1984 labels are representative for 1990 and 1995 and 2024 for 2025 classification
+
+Overall for all years,classification has more than 80% overall capacity and Kappa coeffient is also over 0.8.
+F1-score for each classes is also mostly higher than 0.9 for water, vegetation and crops classes, but developed and bare earth are within 0.7 to 0.85 due to spectral similarities.
+
 ## Classes
 `1 = Water  2 = Vegetation  3 = Sand/Bare  4 = Crops  5 = Developed`
 
@@ -48,17 +61,6 @@ data/samples/  training-point shapefiles (only small files committed)
 ndvi/          NDVI trend figures (PNG/JPG)
 ```
 
-## Notes to self
-- Report the **held-out test** accuracy, not the classifier's own (resubstitution) matrix.
-- Each year uses its **own** imagery + labels — never reuse labels across years.
-- HR covers ~2000–2021; **1984 and 2025 have no HR**, so they use hand-digitized points.
-- **2005** has no Water/Sand code in the source — treat those two classes with care.
-- Landsat 5 years: check the printed scene counts per season; widen a window if 0–1.
-- Keep the feature setup identical every year so trends are real, not method artifacts.
-- For rest of the year where PRRIP classifed image were not available manual labeling were perfermed for each classes 
-- Manual labeling were perfomed for 1984 and 2024, check if 1984 labels are representative for 1990 and 1995 and 2024 for 2025 classification
 
-Overall for all years,classification has more than 80% overall capacity and Kappa coeffient is also over 0.8.
-F1-score for each classes is also mostly higher than 0.9 for water, vegetation and crops classes, but developed and bare earth are within 0.7 to 0.85 due to spectral similarities.
 
 Needs: Python (`rasterio`, `numpy`, `fiona`, GDAL) and a GEE account.
