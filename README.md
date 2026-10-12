@@ -15,15 +15,17 @@ uploaded points, and Run.
 
 | Sensor | Years | Code Editor link |
 |--------|-------|------------------|
-| Landsat 5 | 2000, 2005, 2010 | _paste Get-Link URL_ |
-| Landsat 8 | 2015, 2020 | _paste Get-Link URL_ |
-| Landsat 8/9 | 2021+ (2025) | _paste Get-Link URL_ |
+| Landsat 5 | 1984, 1990, 1995 | https://code.earthengine.google.com/2e0fcf79c0db517ea1b71215aa222824 |
+| Landsat 5 | 2000, 2005, 2010 | https://code.earthengine.google.com/4b20625aed3405bb81746b6589da9168 |
+| Landsat 8 | 2015, 2020 | https://code.earthengine.google.com/6ea79a899e3027263c2865491b8c0527 |
+| Landsat 8/9 | 2021+ (2025) | https://code.earthengine.google.com/2c60b1050f22237c753f6d6cc51205eb |
 
 Archived copies are in `gee/`. (Landsat 7 not used — SLC-off gaps.)
 
 ## Workflow
 **A. Labels (Python — `notebooks/PRRIP_Landcover_labels.ipynb`)**
-1. Export each year from the PRRIP gdb → 1 m GeoTIFF.
+1. Export each year from the PRRIP gdb → 1 m GeoTIFF from 1999 to 2021.
+	PRRIP classified imager covers on managed river section that covers only 25% to 30 % of study reach
 2. Remap to 5 classes, resample to 30 m (majority).
 3. Sample 5000 points/class → `train_pts_RF5_<year>.shp`.
 4. Upload each to Earth Engine as a table asset.
@@ -46,5 +48,10 @@ data/samples/  training-point shapefiles (only small files committed)
 - **2005** has no Water/Sand code in the source — treat those two classes with care.
 - Landsat 5 years: check the printed scene counts per season; widen a window if 0–1.
 - Keep the feature setup identical every year so trends are real, not method artifacts.
+- For rest of the year where PRRIP classifed image were not available manual labeling were perfermed for each classes 
+- Manual labeling were perfomed for 1984 and 2024, check if 1984 labels are representative for 1990 and 1995 and 2024 for 2025 classification
+
+Overall for all years,classification has more than 80% overall capacity and Kappa coeffient is also over 0.8.
+F1-score for each classes is also mostly higher than 0.9 for water, vegetation and crops classes, but developed and bare earth are within 0.7 to 0.85 due to spectral similarities.
 
 Needs: Python (`rasterio`, `numpy`, `fiona`, GDAL) and a GEE account.
