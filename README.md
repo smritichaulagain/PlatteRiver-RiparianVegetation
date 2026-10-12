@@ -6,7 +6,7 @@ land cover maps, resampled to 30 m. Goal: a consistent ~5-year land cover series
 to relate channel and vegetation change to streamflow, precipitation, temperature.
 Method after Chaulagain et al. (2023), *J. Arid Environ.* 219:105068.
 
-## Overview
+## NOTES
 - Report the **held-out test** accuracy, not the classifier's own (resubstitution) matrix.
 - Each year uses its **own** imagery + labels — never reuse labels across years.
 - HR covers ~2000–2021; **1984 and 2025 have no HR**, so they use hand-digitized points.
