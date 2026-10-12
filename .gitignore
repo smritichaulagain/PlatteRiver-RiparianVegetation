@@ -26,3 +26,9 @@ __pycache__/
 .DS_Store
 Thumbs.db
 ~$*
+
+# Keep the small classified output maps (not the big label rasters)
+!Outputs/*.tif
+
+# ArcGIS lock files
+*.lock

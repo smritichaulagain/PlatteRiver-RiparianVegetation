@@ -22,6 +22,12 @@ uploaded points, and Run.
 
 Archived copies are in `gee/`. (Landsat 7 not used — SLC-off gaps.)
 
+## NDVI time series & study area
+- NDVI summer vegetation stats, 1984–2025 (GEE): _paste Get-Link URL_
+- Study boundary (GEE asset / link): _paste link_
+
+NDVI computed on vegetation only (NDVI > 0.2). Trend figures (boxplots) are in `ndvi/`.
+
 ## Workflow
 **A. Labels (Python — `notebooks/PRRIP_Landcover_labels.ipynb`)**
 1. Export each year from the PRRIP gdb → 1 m GeoTIFF from 1999 to 2021.
@@ -37,8 +43,9 @@ Kappa / F1 → export the map and per-class area CSV.
 ## Layout
 ```
 notebooks/     label-building notebook
-gee/           classify_landsat5 / 8 / 89 .js
+gee/           classify_landsat5 / 8 / 89 .js  (+ ndvi_timeseries.js)
 data/samples/  training-point shapefiles (only small files committed)
+ndvi/          NDVI trend figures (PNG/JPG)
 ```
 
 ## Notes to self
