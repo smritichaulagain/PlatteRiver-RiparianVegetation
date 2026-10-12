@@ -35,9 +35,9 @@ uploaded points, and Run.
 
 Archived copies are in `gee/`. (Landsat 7 not used — SLC-off gaps.)
 
-## NDVI time series & study area
-- NDVI summer vegetation stats, 1984–2025 (GEE): _paste Get-Link URL_
-- Study boundary (GEE asset / link): _paste link_
+## NDVI time series 
+- NDVI summer vegetation stats, 1984–2025 (GEE): https://code.earthengine.google.com/25d0a2f42f01b2bf27abff3739399bbb
+
 
 NDVI computed on vegetation only (NDVI > 0.2). Trend figures (boxplots) are in `ndvi/`.
 
